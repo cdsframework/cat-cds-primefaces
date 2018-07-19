@@ -41,6 +41,7 @@
 
     <style>
         .criteria-predicate-part {float: left;height: 24px;line-height: 24px;padding-right: 5px;}
+        .criteria-predicate-part-no-pad {float: left;height: 24px;line-height: 24px;}
         .openGroupNode .criteria-predicate-part {float: left;height: inherit;line-height: inherit;}
         .criteria-predicate-part td {border-width: 0px !important;}
         .ui-treetable tbody td {padding: 4px 5px;}
@@ -69,7 +70,7 @@
                            var="part"
                            rendered="#{predicateManager.isBaseDTO(dto)}">
                     <h:panelGroup layout="block"
-                                  styleClass="criteria-predicate-part">
+                                  styleClass="#{(part.partType == 'Resource' and part.criteriaResourceDTO.resourceType == 'Function') ? 'criteria-predicate-part-no-pad' : 'criteria-predicate-part'}">
 
                         <h:outputText value="#{part.label}"
                                       rendered="#{part.partType == 'Text'}" />
@@ -297,7 +298,7 @@
 
                         <h:panelGroup rendered="#{part.partType == 'Resource'}">
                             <h:panelGroup rendered="#{part.criteriaResourceDTO.resourceType == 'Function'}">
-                                <h:outputText value="Function: #{part.label}" />
+                                <h:outputText value="#{part.label}" />
                             </h:panelGroup>
                             <h:panelGroup rendered="#{part.criteriaResourceDTO.resourceType == 'Global'}">
                                 <h:outputText value="#{part.label}" />
