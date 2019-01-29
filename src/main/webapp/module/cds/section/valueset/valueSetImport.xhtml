@@ -110,13 +110,17 @@
                                 <f:selectItems itemLabel="#{item}"
                                                itemValue="#{item}"
                                                value="#{valueSetMGR.vsacProfiles}" />
+                                <p:ajax event="change" 
+                                        process="@this draftProfile" 
+                                        update="importWarning" 
+                                        listener="#{valueSetMGR.validateImport}" />                                    
                             </p:selectOneMenu> 
                         </h:panelGroup>
                     </h:panelGroup>
                 </h:panelGroup>                    
             </h:panelGroup>
             <h:panelGroup layout="block" id="importWarning" styleClass="margin-top-medium margin-bottom-small margin-left-medium">
-                <h:outputText value="A value set exists for the selected criteria. Importing will overwrite it."
+                <h:outputText value="#{valueSetMGR.valueSetMessage}"
                               rendered="#{valueSetMGR.existingValueSet}"
                               styleClass="red">
                 </h:outputText>
