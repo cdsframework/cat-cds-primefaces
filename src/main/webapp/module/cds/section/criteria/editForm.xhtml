@@ -79,20 +79,6 @@
                                   selectItemLabel="#{item.label}"
                                   selectItemValue="#{item}" />
             </h:panelGroup>
-            <b:dtoDataTable manager="#{criteriaDataTemplateRelMGR}"
-                            paginator="false"
-                            showAdd="#{not criteriaMGR.parentDTO.new}"
-                            header="Available Criteria Templates">
-                <p:column headerText="Label">
-                    <h:outputText value="#{dto.label}" />
-                </p:column>
-                <p:column headerText="OID">
-                    <h:outputText value="#{dto.dataTemplateDTO.oid}" />
-                </p:column>
-                <p:column headerText="Name">
-                    <h:outputText value="#{dto.dataTemplateDTO.name}" />
-                </p:column>
-            </b:dtoDataTable>
 
             <h:panelGroup id="criteriaScopeVersion" styleClass="tab-content">
                 <b:dtoInlineDataTable childClass="org.cdsframework.dto.CriteriaVersionRelDTO$ByCriteriaId"
