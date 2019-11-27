@@ -134,14 +134,19 @@
 
                     <h:panelGroup rendered="#{criteriaPredicatePartMGR.parentDTO.partType == 'ModelElement'}">
 
+                        <fs:inputText id="nodeLabel"
+                                      label="Model Element Label"
+                                      value="#{criteriaPredicatePartMGR.parentDTO.nodeLabel}"
+                                      size="80" />
+
                         <fs:selectOneMenu id="modelElement"
                                           processOnChange="true"
                                           onChangeProcess="#{p:component('partSelector')}"
                                           onChangeUpdate="#{p:component('partSelector')}"
-                                          converter="#{criteriaDataTemplateRelNodeConverter}"
-                                          value="#{criteriaPredicatePartMGR.parentDTO.criteriaDataTemplateRelNodeDTO}"
-                                          selectItemsValue="#{criteriaPredicatePartMGR.criteriaDataTemplateRelNodeDTOs}"
-                                          selectItemLabel="#{item.nodePath}"
+                                          converter="#{dataInputNodeConverter}"
+                                          value="#{criteriaPredicatePartMGR.parentDTO.dataInputNodeDTO}"
+                                          selectItemsValue="#{dataInputNodeDTOList.selectItems}"
+                                          selectItemLabel="#{item.templateName}: #{item.nodePath}"
                                           selectItemValue="#{item}" />
 
                     </h:panelGroup>
